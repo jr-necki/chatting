@@ -5,7 +5,7 @@ import Home from '../routes/Home';
 
 
 const AppRouter = () => {
-    const [isLoggedIn,setIsLoggedIn]=useState(true);
+    const [isLoggedIn,setIsLoggedIn]=useState(false);
     return(
         <Router>
             <Switch>
@@ -24,5 +24,6 @@ const AppRouter = () => {
             </Switch>
         </Router>
     );
-}
+};
+
 export default AppRouter;
