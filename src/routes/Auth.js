@@ -6,7 +6,7 @@ const Auth = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const [newAccount,setNewAccount]=useState(true);
-
+    const [error,setError]=useState("");
     const onChange=(event)=>{
         // 💡 target 안에는 name과 value가 들어있다.
         const {target: {name,value}}=event;
@@ -30,9 +30,10 @@ const Auth = () => {
             console.log(data);
         }catch(e){
             console.log(e);
+            setError(e.message);
         }
-        
     }
+    const toggleAccount =()=> setNewAccount(prev=> !prev);
 
     return (
     <div>
@@ -43,8 +44,10 @@ const Auth = () => {
             <input type="password" placeholder="Password" name="password"
             required value={password} onChange={onChange} />
 
-            <input type="submit" value={newAccount? "Create Account": "Log In"} />
+            <input type="submit" value={newAccount? "Create Account": "Sign In"} />
+            {error}
         </form>
+        <span onClick={toggleAccount}>{newAccount ? "Sign In" : "Create Account"}</span>
         <button>Continue with Google</button>
         <button>Continue with Github</button>
     </div>
