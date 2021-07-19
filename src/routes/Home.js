@@ -1,6 +1,8 @@
 import Tweet from "components/Tweet";
-import { dbService } from "fBase";
+import { dbService, storageService } from "fBase";
 import React, { useEffect, useState } from "react";
+import {v4 as uuidv4} from "uuid";
+
 
 const Home = ({userObj}) => {
     const [tweet,setTweet]=useState("");
@@ -34,13 +36,29 @@ const Home = ({userObj}) => {
 
     const onSubmit = async (event)=>{
         event.preventDefault();
-        await dbService.collection("tweets").add({
+        let attachmentUrl = "";
+        if(attachment !== ""){
+            // 1. 파일에 대한 레퍼런스를 만든다.
+            const attachmentRef=storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+
+            // 2. 파일 데이터를 레퍼런스로 보낸다.
+            const response= await attachmentRef.putString(attachment, "data_url");
+
+            // 3. 다운로드 url
+            attachmentUrl= await response.ref.getDownloadURL();
+        }
+        
+        const tweetObj = {
             // 💡 tweet는 document key!
             text:tweet,
             createdAt: Date.now(),
             createrId:userObj.uid,
-        });
+            attachmentUrl
+        }
+        await dbService.collection("tweets").add(tweetObj);
         setTweet("");
+        setAttachment("");
+        document.getElementById("imgSrc").value="";
     };
     const onChange =(event)=>{
         const {target:{value}}=event;
