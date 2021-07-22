@@ -1,7 +1,8 @@
 import { dbService, storageService } from "fBase";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Tweet =({tweetObj,isOwner}) => {
+const Tweet =({tweetObj,isOwner,userObj}) => {
     const [editing,setEditing]=useState(false);
     const [newTweet,setNewTweet]= useState(tweetObj.text);
 
@@ -17,7 +18,7 @@ const Tweet =({tweetObj,isOwner}) => {
     const toggleEditing = () => setEditing((prev) => !prev);
     const onSubmit = async (event) =>{
         event.preventDefault();
-        console.log(tweetObj, newTweet);
+
         await dbService.doc(`tweets/${tweetObj.id}`).update({
             text:newTweet
         });
@@ -45,7 +46,22 @@ const Tweet =({tweetObj,isOwner}) => {
             </>
           ) : (
             <>
-              <h4>{tweetObj.text}</h4>
+              <Link to={
+                {
+                  pathname: `tweet/${tweetObj.id}`,
+                  state:{
+                    tweetId: tweetObj.id,
+                    tweetAttachment: tweetObj.attachmentUrl,
+                    tweetText: tweetObj.text,
+                    userId:userObj.uid,
+                    userName:userObj.displayName,
+                    isOwner,
+                  }
+                }
+              }>
+                <h4>{tweetObj.text}</h4>
+              </Link>
+              
               {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} width="50px" height="50px" />}
               {isOwner && (
                 <>

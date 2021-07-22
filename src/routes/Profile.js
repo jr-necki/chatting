@@ -30,7 +30,8 @@ export default ({ refreshUser, userObj }) => {
             await userObj.updateProfile({
                 displayName: newDisplayName
             });
-            refreshUser();
+        }else{
+            alert("이미 있는 이름입니다.")
         }
        
     }

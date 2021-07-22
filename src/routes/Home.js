@@ -4,7 +4,6 @@ import { dbService, storageService } from "fBase";
 import React, { useEffect, useState } from "react";
 
 
-
 const Home = ({userObj}) => {
 
     const [tweets,setTweets]= useState([]);
@@ -27,7 +26,8 @@ const Home = ({userObj}) => {
         <TweetFactory userObj={userObj} />
         <div >
             {tweets.map(tweet => 
-                <Tweet key= {tweet.id} tweetObj={tweet} isOwner={tweet.createrId===userObj.uid}/>
+      
+                <Tweet key= {tweet.id} tweetObj={tweet} isOwner={tweet.createrId===userObj.uid} userObj ={userObj}/>
             )}
         </div>
     </div>

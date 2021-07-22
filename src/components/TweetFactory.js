@@ -35,12 +35,14 @@ const TweetFactory = ({ userObj }) =>{
             // 3. 다운로드 url
             attachmentUrl= await response.ref.getDownloadURL();
         }
-    const tweetObj = {
+        
+        
+        const tweetObj = {
             // 💡 tweet는 document key!
             text:tweet,
             createdAt: Date.now(),
             createrId:userObj.uid,
-            attachmentUrl
+            attachmentUrl,
         }
         await dbService.collection("tweets").add(tweetObj);
         setTweet("");

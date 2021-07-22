@@ -21,10 +21,7 @@ const AppRouter = ({ refreshUser, isLoggedIn , userObj}) => {
               <Route exact path="/profile">
                 <Profile userObj={ userObj } refreshUser={ refreshUser } />
               </Route>
-              <Route exact path="/tweet/:id">
-                <TweetDetail  />
-              </Route>
- 
+              <Route path ="/tweet/:id" exact component ={TweetDetail}/>
             </>
           ) : (
             <>
