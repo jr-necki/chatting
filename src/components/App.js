@@ -17,8 +17,12 @@ function App() {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
-          updateProfile: (args) => user.updateProfile(args) // 💡 함수도 넣을수 있었네..
+          photoURL: user.photoURL,
+          updateProfile: (args) => user.updateProfile(args), // 💡 함수도 넣을수 있었네..
         });
+        console.log(user);
+        console.log("App :   "+user.displayName);
+        console.log("App :   "+user.photoURL);
       }else{
         setUserObj(null);
       }
@@ -31,7 +35,8 @@ function App() {
     setUserObj({
       displayName: user.displayName,
       uid: user.uid,
-      updateProfile: (args) => user.updateProfile(args) // 💡 함수도 넣을수 있었네..
+      photoURL: user.photoURL,
+      updateProfile: (args) => user.updateProfile(args), // 💡 함수도 넣을수 있었네..
     });
   }
   return (

@@ -14,6 +14,7 @@ const TweetFactory = ({ userObj }) =>{
         reader.onloadend= (finishedEvent) => {
             const { currentTarget : { result }} = finishedEvent;
             setAttachment(result);
+            console.log("사진 트윗 : ", attachment);
         };
         reader.readAsDataURL(theFile);
     }

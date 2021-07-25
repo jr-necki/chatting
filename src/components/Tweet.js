@@ -56,6 +56,7 @@ const Tweet =({tweetObj,isOwner,userObj}) => {
                     userId:userObj.uid,
                     userName:userObj.displayName,
                     isOwner,
+                    photoURL: userObj.photoURL
                   }
                 }
               }>

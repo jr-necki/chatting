@@ -8,10 +8,12 @@ const TweetDetail =(props) =>{
     const [roomImg, setRoomImg] = useState(props.location.state.tweetAttachment);
     const [userId,setUserId] = useState(props.location.state.userId)
     const [userName,setUserName] = useState(props.location.state.userName);
+    const [photoURL, setPhotoURL] = useState(props.location.state.photoURL);
 
     const [comment,setComment]= useState("");
     const [comments,setComments]= useState([]);
 
+    console.log(props.location.state);
     useEffect(()=>{
         // 💡 orderBy를 해야지 시간 순으로 뜬다!
         dbService.collection("comments")
@@ -32,7 +34,8 @@ const TweetDetail =(props) =>{
             roomId:roomId,
             text : comment,
             createdAt: Date.now(),
-            userName: userName
+            userName: userName,
+            photoURL: photoURL
         }
         await dbService.collection("comments").add(commentObj);
         document.getElementById("comment").value="";
@@ -50,13 +53,14 @@ const TweetDetail =(props) =>{
             <div>
                 {comments.map( comment => 
                 <div>
+                     <img src ={comment.photoURL} width ="30px" height="30px" />
                     <span>{comment.userName}</span>
                     {comment.text}
                 </div>
                     )}
             </div>
             <form onSubmit={ onSubmit }>
-                <span>{userName}</span>
+                <img src ={photoURL} width ="30px" height="30px" /><span>{userName}</span>
                 <input onChange={ onChange }placeholder="comment..." type="text" id="comment"/>
                 <button>enter</button>
             </form>
