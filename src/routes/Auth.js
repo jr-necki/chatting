@@ -2,6 +2,7 @@ import { authService, firebaseInstance } from "fBase";
 import React, { useState } from "react";
 import  "./AuthStyle.scss";
 
+import {AiFillGithub,AiFillGoogleCircle} from 'react-icons/ai';
 
 // 💡 이렇게 써야 외부에서 사용할 때 자동으로 임포트 됨.
 const Auth = () => {
@@ -52,24 +53,46 @@ const Auth = () => {
         
         console.log(data);
     }
+
     const toggleAccount =()=> setNewAccount(prev=> !prev);
     return (
-    <div  className="form_body">
-      
-        <form onSubmit={onSubmit}>
-            <input type="email" placeholder="Email" name="email" 
-            required value={email} onChange={onChange} />
-
-            <input type="password" placeholder="Password" name="password"
-            required value={password} onChange={onChange} />
-
-            <input type="submit" value={newAccount? "Create Account": "Sign In"} />
+    <div  className="auth_body">
+      <div className="form_body">
+          <h1>             
+            Hello Universe
+          </h1>
+        <form className="login_form"onSubmit={onSubmit}>
+            <div className="form_input"> 
+                <div>
+                <input className="input" type="email" placeholder="Email" name="email" 
+                required value={email} onChange={onChange} />
+                </div>
+                <div>
+                <input className="input" type="password" placeholder="Password" name="password"
+                required value={password} onChange={onChange} />
+                </div>
+            </div>
+            <div className="form_button">
+            <button className="login">
+                {newAccount? "Create Account": "Sign In"}
+           </button>
+                
+            </div>
             {error}
         </form>
         <span onClick={toggleAccount}>{newAccount ? "Sign In" : "Create Account"}</span>
+        <div className="icons">
+            <button className="iconBtn" onClick={onSocialClick} name="google">
+                <span class="icon-right"></span><span class="icon-right after"></span>
+                Continue with <AiFillGoogleCircle size="30"/> 
+            </button>
+            <button className="iconBtn" onClick={onSocialClick} name="github">
+                <span class="icon-right"></span><span class="icon-right after"></span>
+                Continue with <AiFillGithub size="30" />
+            </button>
+        </div>
         
-        <button onClick={onSocialClick} name="google">Continue with Google</button>
-        <button onClick={onSocialClick} name="github">Continue with Github</button>
+     </div>
     </div>
     );
 }
