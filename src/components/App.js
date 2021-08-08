@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fBase";
-
-function App() {
+import useSound from "./useSound";
+import effectSound from "./effectSound";
+import BGM from 'audio/mainBGM.flac';
+import "../routes/background.scss";
+const  App = () => {
+  //useSound(BGM, 1, 2000);
   // 로그인 여부를 알 수 있음.
   // 그러나 firebase가 로드하는걸 기다릴 시간 없어서 로그아웃이됨..
   const [isLoggedIn,setIsLoggedIn]=useState(false);
@@ -12,6 +16,7 @@ function App() {
    // useEffect로 변화 감지
   useEffect(()=>{
     // 💡 로그인 로그아웃 할 때 발생
+    
     authService.onAuthStateChanged((user)=> {
       if(user){    
         setUserObj({
@@ -41,6 +46,10 @@ function App() {
   }
   return (
     <>
+    <div class="star star-2"></div>
+        <div class="star star-3"></div>
+        <div class="star star-4"></div>
+        <div class="star star-5"></div>
   { init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} />:"Initializing....."}
  <footer>&copy; {new Date().getFullYear()}Twitter</footer>
   </>

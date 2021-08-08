@@ -1,0 +1,89 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #01080f;
+  background-image: radial-gradient(white, rgba(#fff, .2) 2px, transparent 10px),
+                    radial-gradient(white, rgba(#fff, .15) 1px, transparent 10px),
+                    radial-gradient(white, rgba(#fff, .1) 2px, transparent 5px),
+                    radial-gradient(rgba(#fff, .4), rgba(#fff, .1) 2px, transparent 1px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  overflow: hidden;
+}
+
+
+
+// Passing stars
+
+.star {
+  position: absolute;
+  z-index: 50;
+  top: 50px;
+  left: 0;
+  background-color: #fff;
+  width: 1px;
+  height: 1px;
+  box-shadow: 0 0 0 5px rgba(#fff, .02),
+              0 0 0 10px rgba(#fff, .05);
+  border-radius: 50%;
+  animation: shooting 5s linear infinite;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 1px;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(#000, 0) 0%,rgba(#fff, .4) 100%);    
+  }
+}
+
+// Passing stars positions
+
+.star-2 {
+  top: 100px;
+  left: -100px;
+  animation: shooting 8s 1s linear infinite;
+}
+
+.star-3 {
+  top: 250px;
+  left: -250px;
+  animation: shooting 3s 2s linear infinite;
+}
+
+.star-4 {
+  top: 50px;
+  left: -50px;
+  animation: shooting 3s 2s linear infinite;
+}
+
+.star-5 {
+  top: 150px;
+  left: -150px;
+  animation: shooting 3s 2s linear infinite;
+}
+
+// Passing stars Animation
+
+@keyframes shooting {
+  0% { 
+    transform: translate(-100px, -100px) rotate(45deg) scale(1);
+  }
+  
+  90% { 
+    transform: translate(calc(100% + 300px), calc(100% + 300px)) rotate(45deg) scale(1.5);
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
