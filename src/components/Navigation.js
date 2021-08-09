@@ -10,8 +10,8 @@ const Navigation = ({ userObj }) => (
    
     <nav>
       <div className="logo"><LogoLogin/></div>
-      <div><Link className="button" to="/">HOME <AiOutlineRocket/></Link></div>
-      <div><Link className="button" to="/profile">{userObj.displayName}'s Profile <GiAstronautHelmet/></Link></div>
+      <div><Link className="button" to="/">HOME</Link></div>
+      <div><Link className="button" to="/profile">{userObj.displayName}'s Profile</Link></div>
   </nav>
   </>
 );

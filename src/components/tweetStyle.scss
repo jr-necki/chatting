@@ -1,4 +1,7 @@
+
+
 .editSection{
+
     margin-bottom: 20px;
     display: grid;
 
@@ -19,7 +22,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid white;
+        border: 1px solid rgba(255,255,255,.7);
+        padding: 10px;
+        &:hover{
+             
+            border: 1px solid rgba(0, 238, 0, 1);
+        }
         button{
             width: 50px;
             height: 20px;
@@ -31,6 +39,7 @@
             justify-content: space-between;
             padding: 10px;
             color: white;
+            
             .lock{
                 left: 10px;
             }

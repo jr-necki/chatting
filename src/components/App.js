@@ -5,6 +5,8 @@ import useSound from "./useSound";
 import effectSound from "./effectSound";
 import BGM from 'audio/mainBGM.flac';
 import "../routes/background.scss";
+import Footer from './Footer';
+
 const  App = () => {
   //useSound(BGM, 1, 2000);
   // 로그인 여부를 알 수 있음.
@@ -51,7 +53,7 @@ const  App = () => {
         <div class="star star-4"></div>
         <div class="star star-5"></div>
   { init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} />:"Initializing....."}
- <footer>&copy; {new Date().getFullYear()}COSMOS</footer>
+  <Footer/>
   </>
   );
 }

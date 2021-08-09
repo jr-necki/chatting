@@ -59,7 +59,7 @@ const Tweet =({tweetObj,isOwner,userObj}) => {
            
               <div className="contents">
                 <div>
-                {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} width="150px" height="150px" />}
+                {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} width="120px" height="120px" />}
                 </div>
                 <div>{tweetObj.text}</div>
               </div>
@@ -79,7 +79,7 @@ const Tweet =({tweetObj,isOwner,userObj}) => {
                   }
                 }
               }>
-              {password ?  <GiLockedDoor size="80"/> : <GiExitDoor size="80"/>}
+              {password ?  <GiLockedDoor size="70"/> : <GiExitDoor size="70"/>}
               </Link>
              
               {isOwner && (
