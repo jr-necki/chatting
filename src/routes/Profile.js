@@ -2,6 +2,7 @@ import { authService, dbService, storageService } from "fBase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {v4 as uuidv4} from "uuid";
+import './ProfileStyle.scss';
 
 export default ({ refreshUser, userObj }) => {
     const history=useHistory();
@@ -35,6 +36,11 @@ export default ({ refreshUser, userObj }) => {
                 displayName: newDisplayName
             });
             refreshUser();
+            alert("🎉 success !");
+        }else if(userObj.displayName==''){
+            alert("❗ write your name !")
+        }else{
+            alert("❗ same name !")
         }
 
     }
@@ -56,13 +62,11 @@ export default ({ refreshUser, userObj }) => {
                 photoURL: attachmentUrl
               }).then(() => {
                 console.log("새 유저 프로필 "+userObj.photoURL);
+                alert("🎉 success !");
               }).catch((error) => {
                 console.log("새 url "+attachmentUrl);
               });  
-         
-            
-           
-            
+
         }
     }
     const onChange = (event) => {
@@ -86,22 +90,31 @@ export default ({ refreshUser, userObj }) => {
     }
     return (
         <>
-            <form onSubmit={onSubmit}>
+        <div className="profileEdit">
+
+            <form onSubmit={onSubmit} className="profile">
                 <div>
                 <input type="file" accept="image/*" id="imgSrc" onChange = {onFileChange}/>
                 
                 {userPhotoURL && (
-                    <div>
-                        <img src = {userPhotoURL} width = "50px" height ="50px" />
-                        <button onClick={onClearAttachmentClick}>Clear</button>
+                    <div className="photoInfo">
+                        <div><img src = {userPhotoURL} width = "100px" height ="100px" /></div>
+                        <div><button className="photoBtn" onClick={onClearAttachmentClick} >Clear</button></div>
                     </div>
                 )}
-                 <button onClick ={ onSubmitURL }>OK</button>
+                 <button  onClick ={ onSubmitURL }>OK</button>
                 </div>
-                <input onChange={onChange} type="text" placeholder={newDisplayName} />
-                <input type="submit" value="Update Profile" />
+                <div>
+                    <input onChange={onChange} type="text" placeholder={newDisplayName} />
+                    <button type="submit">Update Profile</button>
+                </div>
+               
             </form>
-            <button onClick={onLogOutClick}> Log Out </button>
+                 <button onClick={onLogOutClick} className="login">
+                    Log out
+                </button>
+             
+        </div>
         </>
     );
 };

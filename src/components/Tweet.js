@@ -2,15 +2,15 @@ import { dbService, storageService } from "fBase";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {AiOutlineDelete, AiOutlineEdit} from "react-icons/ai"
-import {GiEntryDoor} from "react-icons/gi"
+import {GiExitDoor,GiLockedDoor} from "react-icons/gi"
 import './tweetStyle.scss';
 
 const Tweet =({tweetObj,isOwner,userObj}) => {
     const [editing,setEditing]=useState(false);
     const [newTweet,setNewTweet]= useState(tweetObj.text);
-
+    const [password,setpassword] = useState(tweetObj.password);
     const onDeleteClick =async() =>{
-        const ok = window.confirm("are you sure you want to delete this tweet?");
+        const ok = window.confirm("are you sure you want to delete this room?");
         if(ok){
            await dbService.doc(`tweets/${tweetObj.id}`).delete();
            if(tweetObj.attachmentUrl !== "" ){
@@ -73,11 +73,13 @@ const Tweet =({tweetObj,isOwner,userObj}) => {
                     userId:userObj.uid,
                     userName:userObj.displayName,
                     isOwner,
-                    photoURL: userObj.photoURL
+                    photoURL: userObj.photoURL,
+                    password,
+                    tweetObj
                   }
                 }
               }>
-              <GiEntryDoor size="80"/>
+              {password ?  <GiLockedDoor size="80"/> : <GiExitDoor size="80"/>}
               </Link>
              
               {isOwner && (

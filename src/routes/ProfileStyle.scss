@@ -1,0 +1,34 @@
+.profileEdit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    .photoBtn{
+        width: 60px;
+        height: 20px;
+    }
+    button{
+        width: 130px;
+        height: 30px;
+    }
+    .photoInfo{
+        display: flex;
+        align-items: center;
+        img{
+            margin: 10px;
+        }
+    }
+    div{
+        margin: 20px;
+    }
+}
+
+
+  
