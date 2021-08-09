@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Pacifico&family=Palette+Mosaic&family=Shrikhand&display=swap');
+
+nav{
+    margin-bottom: 50px;
+
+    .logo{
+        text-transform: uppercase;
+        transition: 0.5s;
+        letter-spacing: 4px;
+        overflow: hidden;
+        margin-right: 50px;
+        filter: hue-rotate(270deg);
+        color: #03e9f4;
+    }
+    .button{
+        font-weight: 600;
+    }
+}

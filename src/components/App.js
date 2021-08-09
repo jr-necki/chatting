@@ -46,12 +46,12 @@ const  App = () => {
   }
   return (
     <>
-    <div class="star star-2"></div>
+        <div class="star star-2"></div>
         <div class="star star-3"></div>
         <div class="star star-4"></div>
         <div class="star star-5"></div>
   { init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} />:"Initializing....."}
- <footer>&copy; {new Date().getFullYear()}Twitter</footer>
+ <footer>&copy; {new Date().getFullYear()}COSMOS</footer>
   </>
   );
 }

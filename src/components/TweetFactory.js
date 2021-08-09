@@ -2,6 +2,8 @@ import TweetDetail from "routes/TweetDetail";
 import { dbService, storageService } from "fBase";
 import React, { useEffect, useState } from "react";
 import {v4 as uuidv4} from "uuid";
+import "./TweetFactoryStyle.scss";
+import {VscTools} from 'react-icons/vsc';
 
 const TweetFactory = ({ userObj }) =>{
     const [tweet,setTweet]=useState("");
@@ -57,13 +59,17 @@ const TweetFactory = ({ userObj }) =>{
 
     return (
         <form onSubmit={onSubmit}>
-            <input type="text" value={tweet} onChange={onChange} placeholder="What's on your mind?" maxLength={120}/>
-            <input type="file" accept="image/*" id="imgSrc" onChange = {onFileChange}/>
-            <input type="submit" value ="tweet"/>
+            <input type="text" value={tweet} onChange={onChange} placeholder="Room Name" maxLength={20}/>
+            <input className="addImg" type="file" accept="image/*" id="imgSrc" onChange = {onFileChange} />
+            <button type="submit">  
+               <span class="icon-right"></span><span class="icon-right after"></span>
+                ROOM
+            </button>
+      
             {attachment && (
-                <div>
-                    <img src={attachment} width="50px" height="50px"/>
-                    <button onClick={onClearAttachmentClick} >Clear</button>
+                <div className="addPhoto">
+                    <img src={attachment} width="150px" height="150px"/>
+                    <button className="btnClear"onClick={onClearAttachmentClick} >Clear</button>
                 </div>
             )}
         </form>

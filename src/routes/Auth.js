@@ -1,7 +1,7 @@
 import { authService, firebaseInstance } from "fBase";
 import React, { useState } from "react";
 import  "./AuthStyle.scss";
-
+import Logo from '../components/Logo'
 import {AiFillGithub,AiFillGoogleCircle} from 'react-icons/ai';
 
 // 💡 이렇게 써야 외부에서 사용할 때 자동으로 임포트 됨.
@@ -36,6 +36,9 @@ const Auth = () => {
         }catch(e){
             console.log(e);
             setError(e.message);
+            alert(
+                error
+            );
         }
     }
     
@@ -58,9 +61,7 @@ const Auth = () => {
     return (
     <div  className="auth_body">
       <div className="form_body">
-          <h1>             
-            Hello Universe
-          </h1>
+          <Logo/>
         <form className="login_form"onSubmit={onSubmit}>
             <div className="form_input"> 
                 <div>
@@ -78,9 +79,8 @@ const Auth = () => {
            </button>
                 
             </div>
-            {error}
         </form>
-        <span onClick={toggleAccount}>{newAccount ? "Sign In" : "Create Account"}</span>
+        <span className="switch" onClick={toggleAccount}>{newAccount ? "Sign In" : "Create Account"}</span>
         <div className="icons">
             <button className="iconBtn" onClick={onSocialClick} name="google">
                 <span class="icon-right"></span><span class="icon-right after"></span>

@@ -5,13 +5,13 @@ import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 import TweetDetail from "../routes/TweetDetail";
 import Navigation from "./Navigation";
-
+import './RouterStyle.scss'
 
 const AppRouter = ({ refreshUser, isLoggedIn , userObj}) => {
     return (
       <Router>
         {/* 💡 Navigation이 존재하려면 isLoggedIn이 true여야 함 */}
-        {isLoggedIn && <Navigation userObj={userObj} /> } 
+        {isLoggedIn && <Navigation className="navigation" userObj={userObj} /> } 
         <Switch>
           {isLoggedIn ? (
             <>

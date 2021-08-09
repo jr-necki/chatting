@@ -6,7 +6,8 @@
 
 body {
   display: flex;
-  height: 100vh;
+  height: 100%;
+   overflow-y: scroll;
   background-color: #01080f;
   background-image: radial-gradient(white, rgba(#fff, .2) 2px, transparent 10px),
                     radial-gradient(white, rgba(#fff, .15) 1px, transparent 10px),
@@ -14,7 +15,7 @@ body {
                     radial-gradient(rgba(#fff, .4), rgba(#fff, .1) 2px, transparent 1px);
   background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
   background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 

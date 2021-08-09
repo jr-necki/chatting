@@ -11,13 +11,10 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    margin: 150px;
     font-family: 'Space Mono', monospace;
     
     a { text-decoration: none; display: block; }
-    h1{
-      margin-bottom: 20%;
-    }
+
     .form_body{
       color: white;
       display: flex;
@@ -28,7 +25,7 @@
       .login_form{
         display: grid;
         grid-template-columns: 2fr 1fr;
-        gap: 10px 20px;
+   
         .form_input{
           flex-direction: column;
           .input{
@@ -38,7 +35,8 @@
             border: none;
             border-bottom: 1px solid white;
             background-color:transparent;
-            color: greenyellow;
+            color: #03e9f4;;
+            filter: hue-rotate(270deg);
             font-family: 'Space Mono', monospace;
             &:focus{
               border-bottom: white;

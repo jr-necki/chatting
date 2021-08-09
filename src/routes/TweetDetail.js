@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { dbService, storageService } from "fBase";
-
+import './TweetDetailStyle.scss';
+import {MdContentCopy} from 'react-icons/md';
 const TweetDetail =(props) =>{
 
     const [roomId, setRoomId]= useState(props.location.state.tweetId);
@@ -46,22 +47,30 @@ const TweetDetail =(props) =>{
         setComment(value);
     }
     return (
-        <div>
-            <h1>{roomName}</h1>
-            <h5>방 코드 {roomId} </h5>
-            {roomImg &&  <img src={roomImg} width="100px" height="100px" />}
+        <div className="roomDetail">
+            <div className="roomInfo">
+                <div className="roomName">{roomName}</div>
+                <div className="roomCode"><MdContentCopy/> {roomId} </div>
+            </div>
+           
+            {roomImg &&  <img src={roomImg} width="200px" height="200px" />}
             <div>
                 {comments.map( comment => 
-                <div>
+                <div className="history">
                      <img src ={comment.photoURL} width ="30px" height="30px" />
-                    <span>{comment.userName}</span>
-                    {comment.text}
+                     <span>{comment.userName}</span>
+                     <span className="comments">
+                    {comment.text}</span>
+                 
                 </div>
                     )}
             </div>
             <form onSubmit={ onSubmit }>
-                <img src ={photoURL} width ="30px" height="30px" /><span>{userName}</span>
-                <input onChange={ onChange }placeholder="comment..." type="text" id="comment"/>
+               <div className="comment">
+                    <div> <img src ={photoURL} width ="50px" height="50px" /></div>
+                   <div className="username"> <span></span><span>{userName}</span></div>
+                   <div><input onChange={ onChange }placeholder="comment..." type="text" id="comment"/></div>
+               </div>
                 <button>enter</button>
             </form>
         </div>

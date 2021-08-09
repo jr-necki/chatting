@@ -1,0 +1,44 @@
+.roomDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    .history{
+        margin-bottom: 10px;
+    }
+    .comments{
+        color: rgba(38, 255, 0, 0.6);
+        font-weight: 800;
+    }
+    .roomInfo{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+       .roomName{
+           font-size: 60px;
+           font-weight: 700;
+           margin:20px;
+       }
+       .roomCode{
+           margin-left: 50px;
+           font-size: 15px;
+       }
+    }
+    form{
+        margin: 30px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .comment{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+        .username{
+            margin:10px;
+        }
+    }
+}

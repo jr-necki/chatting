@@ -1,0 +1,30 @@
+$main: #ffff;
+$back: #0000;
+form{
+    color: white;
+    border-radius: 10px;
+    border:1px solid white;
+    padding: 10px;
+    input{
+        height: 30px;
+        width: 300px;
+    }
+    .addPhoto{
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        
+        img{
+            border: 1.5px solid rgba(38, 255, 0, 1);
+        }
+        .btnClear{
+            width: 100px;
+            height: 30px;
+            margin: 10px;
+        }
+    }
+    
+}
+
+
+  

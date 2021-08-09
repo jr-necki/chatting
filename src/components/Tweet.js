@@ -1,6 +1,9 @@
 import { dbService, storageService } from "fBase";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {AiOutlineDelete, AiOutlineEdit} from "react-icons/ai"
+import {GiEntryDoor} from "react-icons/gi"
+import './tweetStyle.scss';
 
 const Tweet =({tweetObj,isOwner,userObj}) => {
     const [editing,setEditing]=useState(false);
@@ -29,23 +32,37 @@ const Tweet =({tweetObj,isOwner,userObj}) => {
         setNewTweet(value);
     }
     return (
-        <div>
+        <div className="editSection">
           {editing ? (
             <>
-              <form onSubmit={onSubmit}>
-                <input
+              <form className="editForm" onSubmit={onSubmit}>
+                <input 
                   type="text"
                   placeholder="Edit your tweet"
                   value={newTweet}
                   required
                   onChange={onChange}
+                  maxLength={20}
                 />
-                <input type="submit" value="Update Tweet" />
+                <div >
+                  <button className="btn" width="30px" heigh="10px" type="submit" value="Update">Update</button>
+                  <button className="btn" width="30px" heigh="10px" onClick={toggleEditing}>Cancel</button>
+                </div>
+               
               </form>
-              <button onClick={toggleEditing}>Cancel</button>
+            
             </>
           ) : (
             <>
+            <div className="tweet">
+
+           
+              <div className="contents">
+                <div>
+                {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} width="150px" height="150px" />}
+                </div>
+                <div>{tweetObj.text}</div>
+              </div>
               <Link to={
                 {
                   pathname: `tweet/${tweetObj.id}`,
@@ -60,19 +77,21 @@ const Tweet =({tweetObj,isOwner,userObj}) => {
                   }
                 }
               }>
-                <h4>{tweetObj.text}</h4>
+              <GiEntryDoor size="80"/>
               </Link>
-              
-              {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} width="50px" height="50px" />}
+             
               {isOwner && (
                 <>
-                  <button onClick={onDeleteClick}>Delete Tweet</button>
-                  <button onClick={toggleEditing}>Edit Tweet</button>
+                  <button onClick={onDeleteClick}><AiOutlineDelete/></button>
+                  <button onClick={toggleEditing}><AiOutlineEdit/></button>
                 </>
               )}
+              
+            </div>
             </>
           )}
         </div>
+        
       );
 };
 

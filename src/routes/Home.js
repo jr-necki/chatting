@@ -2,7 +2,7 @@ import Tweet from "components/Tweet";
 import TweetFactory from "components/TweetFactory";
 import { dbService, storageService } from "fBase";
 import React, { useEffect, useState } from "react";
-
+import  "./HomeStyle.scss";
 
 const Home = ({userObj}) => {
 
@@ -22,9 +22,9 @@ const Home = ({userObj}) => {
         
         
     return (
-        <div>
+        <div className="home_body">
         <TweetFactory userObj={userObj} />
-        <div >
+        <div className="tweets">
             {tweets.map(tweet => 
       
                 <Tweet key= {tweet.id} tweetObj={tweet} isOwner={tweet.createrId===userObj.uid} userObj ={userObj}/>
